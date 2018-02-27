@@ -13,8 +13,7 @@ and open the template in the editor.
     </head>
     <body>
         <div style="text-align: center">
-            <h1>Let's play!</h1>
-            
+            <h1>Let's play!</h1>   
             <?php 
             play();
             ?>

@@ -23,7 +23,7 @@ function display($choice) {
             echo $value;
         endforeach;
     else :
-        echo $choices[$choice];
+        echo str_replace("?choice={$choice}", "#", $choices[$choice]);
     endif;
 }
 
@@ -39,6 +39,7 @@ function validate_choice($choice){
     endif;
 }
 
+//Main rules
 function play_round($choice){
     $available_choices = ['rock', 'paper', 'scissors'];
     $generated = $available_choices[rand(0, 2)];
@@ -47,7 +48,8 @@ function play_round($choice){
         $choice == 'rock' && $generated == 'scissors') :
         echo '<h1 style="color:green;">You Won! :)</h1>';
     elseif ($choice == $generated) : {
-        echo '<h1 style="color:blue;">Standoff. :|</h1>';
+        echo '<h1 style="color:blue;">Standoff. :|</h1>'
+        . '<button onclick="window.location.reload(true);" >Play again!</button></p>';
     }
     else :
         echo '<h1 style="color:red;">You lost! :(</h1>';
@@ -55,5 +57,6 @@ function play_round($choice){
     
     display($choice);
     display($generated);
+    echo '<p><a href="index.php">Go Back</a></p>';
 }
 ?>
